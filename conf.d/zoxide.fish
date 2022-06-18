@@ -31,7 +31,7 @@ if status is-interactive
             else if test $argc -eq 1 -a -d $argv[1]
                 _zoxide_cd $argv[1]
             else
-                set -l result (command zoxide query --exclude (builtin pwd -L) -- $argv)
+                set -l result (command zoxide query $argv)
                 and _zoxide_cd $result
             end
         end

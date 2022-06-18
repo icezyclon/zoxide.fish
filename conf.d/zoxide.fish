@@ -15,17 +15,18 @@ end
 
 function _zoxide_install --on-event zoxide_install
     if status is-interactive
-        switch (read --prompt-str="$_zoxide_msg_promt Replace cd with z? [Y/n] " | string lower)
+        switch (read --prompt-str="$_zoxide_msg_promt Abbreviate cd to z? [Y/n] " | string lower)
             case y ye yes ''
+                echo "$_zoxide_msg_promt Adding" (echo -ns "abbr cd z" | fish_indent --ansi)
                 abbr -a -U cd z
             case '*'
-                echo "$_zoxide_msg_promt Note: Type" (echo -ns "abbr cd z" | fish_indent --ansi) "to use z as a direct replacement for cd"
+                echo "$_zoxide_msg_promt Note: Type" (echo -ns "abbr cd z" | fish_indent --ansi) "to abbreviate cd to z"
         end
     end
 end
 
 function _zoxide_uninstall --on-event zoxide_uninstall
-    if abbr -q cd && abbr -s | grep "\-\- cd z"
+    if abbr -q cd && abbr -s | grep "\-\- cd z" >/dev/null
         abbr -e cd
         echo "$_zoxide_msg_promt Removing" (echo -ns "abbr cd z" | fish_indent --ansi)
     end

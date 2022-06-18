@@ -10,11 +10,13 @@ By default, tab completion for **z** does *first* complete directories and *then
 
 **zi** may be used for interactive selection of recently visited directories.
 
-After installation **z** may be used instead of cd like so 
+After installation cd may be used as an abbriviation for **z** like so:
 
 ```fish
 abbr cd z
 ```
+
+This leaves the normal cd command unchanged for scripts but replaced cd with z during normal interactive shell usage.
 
 ## Requirements
 
@@ -25,6 +27,8 @@ On Ubuntu and other Debian systems, **zoxide** may be installed with apt:
 ```console
 sudo apt install zoxide
 ```
+
+> This plugin was written for [fish version 3.5.0](https://fishshell.com/docs/3.5/), there is no guarantee that it will work for older versions of fish.
 
 ## Installation
 

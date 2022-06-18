@@ -3,20 +3,14 @@
 > Tab completion and initialization for [zoxide](https://github.com/ajeetdsouza/zoxide) in [fish shell](https://fishshell.com/).
 
 [Zoxide](https://github.com/ajeetdsouza/zoxide) is a *smarter cd command* and can be used as a *direct replacement* for cd in the shell.
-Once sourced by this plugin it provides the **z** command to navigate between directories.
-**z** may be used as a *drop in replacement* for cd.
+Once sourced by this plugin it provides the **z** command to navigate between directories, which also replaces the default cd command.
 
 By default, tab completion for **z** does *first* complete directories and *then* zoxide queries, if no directories match the given string.
 
 **zi** may be used for interactive selection of recently visited directories.
 
-After installation cd may be used as an abbreviation for **z** like so:
-
-```fish
-abbr cd z
-```
-
-This leaves the normal cd command unchanged for scripts but replaced cd with z during normal interactive shell usage.
+After installation the cd command will be aliased to **z** by default.
+> In case this is not desired `_zoxide_uninstall` may be called in `config.fish` after the plugin was initialized to restore the old cd and keep **z** as a separate function.
 
 ## Requirements
 
@@ -28,9 +22,12 @@ On Ubuntu and other Debian systems, **zoxide** may be installed with apt:
 sudo apt install zoxide
 ```
 
-> This plugin was written for [fish version 3.5.0](https://fishshell.com/docs/3.5/), there is no guarantee that it will work for older versions of fish.
+## Versions
 
-> The plugin sources `zoxide init fish`, which was tested for the apt version `0.4.3-2` only.
+Because [zoxide](https://github.com/ajeetdsouza/zoxide) changes the the init script based on the version, and especially because the apt version of **zoxide** is still very old, this plugin does *not* source `zoxide init fish`.
+It instead provides modified copies of the required functions from **zoxide** version 0.8.1 with custom tab completion.
+
+> This plugin was written for [fish version 3.5.0](https://fishshell.com/docs/3.5/), there is no guarantee that it will work for older versions of fish.
 
 ## Installation
 
@@ -44,7 +41,7 @@ The default behavior for tab completion may change.
 To get the same stable version of the behavior install from a certain tag instead, e.g.
 
 ```console
-fisher install icezyclon/zoxide.fish@1.0
+fisher install icezyclon/zoxide.fish@2.0
 ```
 
 ## Related Plugins

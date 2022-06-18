@@ -30,6 +30,8 @@ sudo apt install zoxide
 
 > This plugin was written for [fish version 3.5.0](https://fishshell.com/docs/3.5/), there is no guarantee that it will work for older versions of fish.
 
+> The plugin sources `zoxide init fish`, which was tested for the apt version `0.4.3-2` only.
+
 ## Installation
 
 Install with [Fisher](https://github.com/jorgebucaran/fisher):

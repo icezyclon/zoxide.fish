@@ -28,8 +28,8 @@ if status is-interactive
                 _zoxide_cd $HOME
             else if test "$argv" = -
                 _zoxide_cd -
-            else if test $argc -eq 1 -a -d $argv[1]
-                _zoxide_cd $argv[1]
+            else if test -d $argv[-1]
+                _zoxide_cd $argv[-1]
             else
                 set -l result (command zoxide query $argv)
                 and _zoxide_cd $result
@@ -46,8 +46,8 @@ if status is-interactive
         alias cd=z
 
         # use custom completion
-        complete -c z -f
-        complete -c z -n __fish_use_subcommand -x -a '(_zoxide_z_complete)'
+        complete -c z -f # disable files by default 
+        complete -c z -x -a '(_zoxide_z_complete)'
     else
         echo "[plugin: zoxide] Command 'zoxide' cannot be found. Not installed or not in path"
     end
